@@ -1,5 +1,5 @@
-langgraph==0.4.8
-langchain-openai==0.3.2
-crewai==0.130.0
-pydantic-ai==0.2.17
-openai==1.86.0
+langgraph
+langchain-openai
+crewai
+pydantic-ai
+openai

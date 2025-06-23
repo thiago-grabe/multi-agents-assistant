@@ -1,5 +1,14 @@
-# Install: pip install langgraph langchain-openai
+# Install: pip install langgraph langchain-openai python-dotenv
+import os
+from dotenv import load_dotenv
 from langgraph.prebuilt import create_react_agent
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Check if OpenAI API key is available
+if not os.getenv("OPENAI_API_KEY"):
+    raise ValueError("OPENAI_API_KEY not found in environment variables. Please check your .env file.")
 
 # Create a sales assistant agent with OpenAI GPT-3.5
 agent = create_react_agent(
