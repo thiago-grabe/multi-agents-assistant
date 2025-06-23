@@ -1,5 +1,9 @@
-langgraph
-langchain-openai
-crewai
-pydantic-ai
-openai
+langgraph==0.4.8
+langchain-openai==0.3.24
+langchain==0.3.26
+langchain-core==0.3.66
+langchain-text-splitters==0.3.8
+crewai==0.130.0
+pydantic-ai==0.3.2
+openai==1.90.0
+python-dotenv==1.1.0
