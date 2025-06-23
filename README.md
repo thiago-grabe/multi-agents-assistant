@@ -1,47 +1,52 @@
-# PydanticAI Sales Q&A Agents with Self-Reflection
+# PydanticAI Agents with Multiple Frameworks
 
-This repository demonstrates how to build sophisticated **Sales AI Agents** using [PydanticAI](https://github.com/pydantic-ai/pydantic-ai) and OpenAI's GPT models. The system features a two-agent collaboration architecture with detailed logging and self-correction capabilities for sales-related questions and scenarios.
+This repository demonstrates how to build AI agents using different frameworks including [PydanticAI](https://github.com/pydantic-ai/pydantic-ai), [LangGraph](https://github.com/langchain-ai/langgraph), and [CrewAI](https://github.com/joaomdmoura/crewAI). The project showcases various approaches to creating conversational AI agents with proper environment management and structured outputs.
 
-> **🎯 Enhanced Agent Architecture**  
-> This project showcases an advanced dual-agent system:
-> 1. **Primary Sales Agent** – provides comprehensive sales answers with structured output and confidence scoring
-> 2. **Reflection & Quality Agent** – reviews, validates, and improves responses with detailed analysis
-> 3. **Comprehensive Logging** – tracks all agent decisions and processes step-by-step
-> 4. **Rich Console Output** – beautiful formatted output for better debugging and monitoring
+> **🎯 Multi-Framework Approach**  
+> This project demonstrates different AI agent frameworks:
+> 1. **PydanticAI** – Type-safe AI agents with structured outputs
+> 2. **LangGraph** – Graph-based agent workflows with React agents
+> 3. **CrewAI** – Multi-agent collaboration framework
+> 4. **Environment Management** – Secure API key handling with .env configuration
 
 ---
 
 ## 🌟 Key Features
 
-- **🤖 Dual-Agent Architecture**: Primary sales agent + reflection agent for quality assurance
+- **🤖 Multiple Frameworks**: PydanticAI, LangGraph, and CrewAI examples
 - **📊 Structured Outputs**: Type-safe responses with Pydantic validation
-- **🔍 Detailed Logging**: Step-by-step process visualization with Rich console formatting
-- **⚡ Real-time Feedback**: Confidence scoring and quality assessment
-- **🎨 Beautiful UI**: Enhanced console output with colors, panels, and tables
 - **🔧 Environment Management**: Secure API key handling with .env configuration
-- **📋 Comprehensive Schemas**: Detailed response structures with metadata
+- **📋 Comprehensive Examples**: Working examples for each framework
+- **🔍 Error Handling**: Proper validation and error messages
+- **📚 Jupyter Notebooks**: Interactive examples with detailed explanations
 
 ---
 
 ## 📂 Repository Structure
 
 ```
-pydanticai-sales-agents/
-├── .env                              # Environment variables (created automatically)
+pydanticai-me-agents/
+├── .env                              # Environment variables (API keys)
 ├── .gitignore                        # Git ignore patterns
 ├── README.md                         # This comprehensive guide
 ├── requirements.txt                  # Python dependencies with versions
-└── notebooks/
-    └── me_agents_example.ipynb       # Enhanced sales agents notebook
+├── frameworks/                       # Framework-specific examples
+│   ├── pydanticai.py                # PydanticAI sales agent example
+│   ├── langgraph_example.py         # LangGraph React agent example
+│   ├── crewai_example.py            # CrewAI multi-agent example
+│   └── requirements-frameworks.txt   # Framework-specific dependencies
+└── notebooks/                        # Interactive examples
+    └── reflection_sales_agent.ipynb  # Enhanced sales agents notebook
 ```
 
 ### 📁 File Descriptions
 
-- **`.env`** – Auto-generated environment configuration with OpenAI settings
+- **`.env`** – Environment configuration with OpenAI API key
 - **`.gitignore`** – Protects sensitive files and caches
 - **`README.md`** – Complete setup and usage documentation
 - **`requirements.txt`** – All Python dependencies with version constraints
-- **`notebooks/me_agents_example.ipynb`** – Interactive demonstration of the sales agent system
+- **`frameworks/`** – Framework-specific examples and requirements
+- **`notebooks/`** – Interactive Jupyter notebook examples
 
 ---
 
@@ -49,29 +54,36 @@ pydanticai-sales-agents/
 
 ### 1. **Clone and Navigate**
 ```bash
-git clone https://github.com/<your-username>/pydanticai-sales-agents.git
-cd pydanticai-sales-agents
+git clone https://github.com/<your-username>/pydanticai-me-agents.git
+cd pydanticai-me-agents
 ```
 
 ### 2. **Environment Setup**
 ```bash
 # Create virtual environment
-python3 -m venv venv
+python3 -m venv .venv
 
 # Activate virtual environment
-source venv/bin/activate      # macOS/Linux
-# venv\Scripts\activate       # Windows
+source .venv/bin/activate      # macOS/Linux
+# .venv\Scripts\activate       # Windows
 ```
 
 ### 3. **Install Dependencies**
 ```bash
+# Install main dependencies
 pip install -r requirements.txt
+
+# Install framework-specific dependencies
+pip install -r frameworks/requirements-frameworks.txt
 ```
 
 ### 4. **Configure API Keys**
-The `.env` file is automatically created. Edit it to add your OpenAI API key:
+Copy the example environment file and add your OpenAI API key:
 ```bash
-# Edit the .env file:
+# Copy the example file
+cp .env-example .env
+
+# Edit the .env file with your API key:
 OPENAI_API_KEY=your_openai_api_key_here
 OPENAI_MODEL_NAME=gpt-3.5-turbo
 OPENAI_MODEL_TEMPERATURE=0.7
@@ -82,134 +94,183 @@ DEBUG_MODE=True
 
 ## 🚀 Usage Guide
 
-### **Quick Start**
-1. **Launch Jupyter Notebook**
-   ```bash
-   cd notebooks
-   jupyter notebook me_agents_example.ipynb
-   ```
+### **Quick Start Examples**
 
-2. **Follow the Interactive Guide**
-   The notebook includes:
-   - 📦 **Dependency Installation**: Automated setup with progress tracking
-   - 🔧 **Environment Configuration**: API key validation and setup
-   - 📋 **Schema Definition**: Structured output models with validation
-   - 🤖 **Agent Creation**: Primary and reflection agents with detailed prompts
-   - 💬 **Sales Scenarios**: Real-world sales questions and answers
-   - 🔍 **Quality Analysis**: Reflection and improvement processes
+#### 1. **PydanticAI Agent**
+```bash
+python frameworks/pydanticai.py
+```
+Creates a sales assistant agent with structured outputs and confidence scoring.
 
-### **Example Sales Scenarios**
+#### 2. **LangGraph Agent**
+```bash
+python frameworks/langgraph_example.py
+```
+Demonstrates a React agent using LangGraph for conversational AI.
 
-The system handles various sales scenarios:
+#### 3. **CrewAI Multi-Agent System**
+```bash
+python frameworks/crewai_example.py
+```
+Shows multi-agent collaboration for complex tasks.
 
-- **🎯 Sales Strategy**: "How do I handle price objections from enterprise clients?"
-- **📞 Cold Calling**: "What's the best approach for cold calling in the SaaS industry?"
-- **🤝 Relationship Building**: "How can I build long-term relationships with B2B customers?"
-- **📊 Performance Metrics**: "What KPIs should I track for sales effectiveness?"
-- **🏆 Closing Techniques**: "Walk me through advanced closing techniques for high-value deals"
+### **Interactive Notebook**
+```bash
+cd notebooks
+jupyter notebook reflection_sales_agent.ipynb
+```
 
 ---
 
-## 📚 Technical Architecture
+## 📚 Framework Examples
 
-### **Agent Schemas**
-
-#### `SalesAnswer` - Primary Response Schema
+### **PydanticAI Example** (`frameworks/pydanticai.py`)
 ```python
-class SalesAnswer(BaseModel):
-    answer: str                    # Comprehensive sales response
-    confidence_score: float        # AI confidence (0.0-1.0)
-    key_points: List[str]         # Actionable takeaways
-    sales_category: str           # Topic classification
+from pydantic_ai import Agent
+
+# Create a sales assistant agent
+agent = Agent(
+    "openai:gpt-3.5-turbo",
+    system_prompt="You are a friendly sales assistant."
+)
+
+# Run the agent
+result = agent.run_sync("Do you have any current promotions on laptops?")
+print(result.output)
 ```
 
-#### `ReflectionAnalysis` - Quality Assessment Schema
+**Features:**
+- Type-safe agent creation
+- Structured outputs with Pydantic validation
+- Simple and clean API
+- Built-in error handling
+
+### **LangGraph Example** (`frameworks/langgraph_example.py`)
 ```python
-class ReflectionAnalysis(BaseModel):
-    reviewed_answer: str              # Improved response
-    quality_score: float              # Quality assessment (0.0-1.0)
-    improvements_made: List[str]      # Specific enhancements
-    missing_elements: List[str]       # Identified gaps
-    additional_considerations: str    # Extra insights
+from langgraph.prebuilt import create_react_agent
+
+# Create a React agent
+agent = create_react_agent(
+    model="openai:gpt-3.5-turbo",
+    tools=[],
+    prompt="You are a helpful sales assistant"
+)
+
+# Query the agent
+response = agent.invoke({
+    "messages": [{"role": "user", "content": "What is your return policy?"}]
+})
 ```
 
-### **Agent Configuration**
+**Features:**
+- Graph-based agent workflows
+- React agent pattern
+- Tool integration capabilities
+- Message-based interaction
 
-#### Primary Sales Agent
-- **Model**: GPT-3.5-turbo (configurable)
-- **Role**: Sales expert with comprehensive knowledge
-- **Output**: Structured `SalesAnswer` with metadata
-- **Features**: Confidence scoring, categorization, key points extraction
+### **CrewAI Example** (`frameworks/crewai_example.py`)
+```python
+from crewai import Agent, Task, Crew
 
-#### Reflection Agent
-- **Model**: GPT-3.5-turbo (configurable)
-- **Role**: Quality assurance and improvement specialist
-- **Output**: Detailed `ReflectionAnalysis` with enhancements
-- **Features**: Quality scoring, gap analysis, improvement suggestions
+# Create specialized agents
+researcher = Agent(
+    role='Research Analyst',
+    goal='Find accurate information about sales strategies',
+    backstory='Expert in market research and data analysis'
+)
 
-### **Enhanced Features**
+# Create tasks and crew
+task = Task(description='Research best sales practices')
+crew = Crew(agents=[researcher], tasks=[task])
+result = crew.kickoff()
+```
 
-- **🎨 Rich Console Output**: Beautiful formatted output with colors and panels
-- **📊 Progress Tracking**: Step-by-step process visualization
-- **🔍 Debug Logging**: Comprehensive logging for troubleshooting
-- **⚡ Real-time Validation**: Immediate schema validation and error handling
-- **🔧 Environment Management**: Secure configuration with validation
+**Features:**
+- Multi-agent collaboration
+- Role-based agent design
+- Task delegation
+- Complex workflow management
 
 ---
 
-## 🛠 Dependencies Explained
+## 🛠 Dependencies
 
-### **Core Framework**
-- **`pydantic-ai>=0.3.0`** – Advanced AI agent framework with type safety
-- **`openai>=1.0.0`** – Official OpenAI API client with latest features
+### **Core Dependencies** (`requirements.txt`)
+```
+pydantic-ai==0.3.2
+python-dotenv==1.1.0
+openai==1.90.0
+rich==14.0.0
+ipykernel==6.29.5
+langgraph==0.4.8
+langchain-openai==0.3.24
+langchain==0.3.26
+langchain-core==0.3.66
+langchain-text-splitters==0.3.8
+crewai==0.130.0
+```
 
-### **Environment & Configuration**
-- **`python-dotenv>=1.0.0`** – Secure environment variable management
-- **`rich>=13.0.0`** – Beautiful console output with colors and formatting
+### **Framework-Specific Dependencies** (`frameworks/requirements-frameworks.txt`)
+```
+langgraph==0.4.8
+langchain-openai==0.3.24
+langchain==0.3.26
+langchain-core==0.3.66
+langchain-text-splitters==0.3.8
+crewai==0.130.0
+pydantic-ai==0.3.2
+openai==1.90.0
+python-dotenv==1.1.0
+```
 
-### **Development Environment**
-- **`jupyter>=1.0.0`** – Interactive notebook environment
-- **`ipykernel>=6.0.0`** – Jupyter kernel for Python execution
+---
+
+## 🔍 Environment Configuration
+
+### **Required Environment Variables**
+```bash
+# .env file structure
+OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_MODEL_NAME=gpt-3.5-turbo
+OPENAI_MODEL_TEMPERATURE=0.7
+DEBUG_MODE=True
+```
+
+### **API Key Setup**
+1. Get your OpenAI API key from [OpenAI Platform](https://platform.openai.com/api-keys)
+2. Copy `.env-example` to `.env`
+3. Add your API key to the `.env` file
+4. All examples will automatically load the environment variables
 
 ---
 
 ## 🎯 Advanced Usage
 
-### **Custom Sales Scenarios**
-Modify the notebook to handle specific sales scenarios:
+### **Custom Agent Creation**
+Each framework supports customization:
 
 ```python
-# Custom sales question
-question = "How do I negotiate with procurement teams in enterprise sales?"
+# PydanticAI with custom schema
+from pydantic import BaseModel
 
-# Run through both agents
-primary_result = sales_agent.run_sync(question)
-reflection_result = reflection_agent.run_sync(
-    f"Question: {question}\nAnswer: {primary_result.output.answer}"
-)
+class CustomResponse(BaseModel):
+    answer: str
+    confidence: float
+    metadata: dict
+
+agent = Agent("openai:gpt-4", response_model=CustomResponse)
 ```
 
-### **Configuration Options**
-Customize agent behavior through environment variables:
+### **Environment Management**
+All examples include proper environment handling:
+```python
+import os
+from dotenv import load_dotenv
 
-```bash
-# .env configuration
-OPENAI_MODEL_NAME=gpt-4                    # Use GPT-4 for enhanced responses
-OPENAI_MODEL_TEMPERATURE=0.3               # Lower temperature for more focused answers
-DEBUG_MODE=True                            # Enable detailed logging
+load_dotenv()
+if not os.getenv("OPENAI_API_KEY"):
+    raise ValueError("OPENAI_API_KEY not found in environment variables.")
 ```
-
----
-
-## 🔍 Monitoring & Debugging
-
-The system provides comprehensive monitoring:
-
-- **🎯 Agent Decision Tracking**: See how each agent processes questions
-- **📊 Confidence Metrics**: Monitor AI confidence levels
-- **🔍 Quality Assessments**: Track improvement suggestions
-- **⚡ Performance Logging**: Execution time and resource usage
-- **🛠 Error Handling**: Detailed error messages with suggestions
 
 ---
 
@@ -218,31 +279,20 @@ The system provides comprehensive monitoring:
 We welcome contributions! Here's how to get started:
 
 1. **Fork the Repository**
-   ```bash
-   git fork https://github.com/<your-username>/pydanticai-sales-agents.git
-   ```
-
 2. **Create Feature Branch**
    ```bash
-   git checkout -b feature/new-sales-scenario
+   git checkout -b feature/new-framework-example
    ```
-
-3. **Make Changes**
-   - Add new sales scenarios
-   - Enhance agent prompts
-   - Improve output formatting
-   - Add new validation schemas
-
+3. **Add New Examples**
+   - Create new framework examples
+   - Update requirements files
+   - Add documentation
 4. **Submit Pull Request**
-   ```bash
-   git commit -am "Add enterprise sales scenarios"
-   git push origin feature/new-sales-scenario
-   ```
 
 ### **Contribution Ideas**
-- 🎯 New sales scenarios and use cases
-- 📊 Enhanced metrics and scoring systems
-- 🔧 Additional agent configurations
+- 🎯 New framework examples (AutoGen, Semantic Kernel, etc.)
+- 📊 Enhanced agent configurations
+- 🔧 Additional tool integrations
 - 📚 Documentation improvements
 - 🧪 Test cases and validation
 
@@ -250,16 +300,16 @@ We welcome contributions! Here's how to get started:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
 
 ---
 
 ## 🙏 Acknowledgments
 
 - **PydanticAI Team** – For the excellent AI agent framework
+- **LangGraph Team** – For graph-based agent workflows
+- **CrewAI Team** – For multi-agent collaboration framework
 - **OpenAI** – For providing powerful language models
-- **Rich Library** – For beautiful console formatting
-- **Sales Community** – For inspiring real-world scenarios and use cases
 
 ---
 
@@ -267,10 +317,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 Need help? Here are your options:
 
-- 📖 **Documentation**: Check the notebook for detailed examples
+- 📖 **Documentation**: Check the examples in the `frameworks/` directory
 - 🐛 **Issues**: Report bugs via GitHub Issues
 - 💬 **Discussions**: Join the conversation in GitHub Discussions
-- 📧 **Contact**: Reach out for custom implementations
 
 ---
 
